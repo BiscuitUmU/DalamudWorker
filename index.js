@@ -41,7 +41,13 @@ async function handleRequest(request) {
     }
 
     if (body == null)
-        body = JSON.stringify({ error: true, message: errorMessage, status: status });
+        return new Response(PAGE_HTML, {
+            status: status,
+            headers: {
+                "content-type": "text/html;charset=UTF-8",
+                "x-password": "hunter2"
+            }
+        })
 
     return new Response(body, {
         status: status,
@@ -126,3 +132,63 @@ async function getPluginDef(project, branch) {
     const def = await response.json();
     return def;
 }
+
+const PAGE_HTML = `<!DOCTYPE html>
+<title>Dalamud Repo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1 {
+    font-family: "Raleway", sans-serif
+}
+body, html {
+    height: 100%
+}
+body {
+    background-color: #222126;
+    overflow: hidden;
+}
+code {
+    color: #e3e3e3;
+    background-color: #2a292e;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.center {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+}
+</style>
+<body>
+
+<div class="container">
+    <div class="center">
+        <div class="container">
+            <img width="128" height="128" src="https://raw.githubusercontent.com/goatcorp/DalamudAssets/master/UIRes/logo.png" />
+        </div>
+        <h1>Hi there, this is a Dalamud Repo.</h1>
+        <p>To add this repo please copy what's below into your Dalamud settings.</p>
+        <code id=repoLoc></code>
+    </div>
+</div>
+
+<script>
+    document.getElementById("repoLoc").innerHTML = 
+    window.location.protocol + "//" + window.location.hostname + "/plugins"
+</script>
+
+</body>
+`
