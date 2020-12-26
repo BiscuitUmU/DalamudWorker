@@ -28,5 +28,8 @@ Automated Cloudflare Worker for creating a Dalamud repo from Github Actions usin
  - `DOWNLOAD_COUNT`: This will change what's shown on the download count in the plugin installer.
  - `GITHUB_USER_AGENT`: This will change what user-agent will be used to fetch from the GitHub API (**CHANGE THIS!**)
  
+## 404 Page
+Included is a html template (`template.html`) to setup a nice user-friendly 404 Page. To include your changes edit the PAGE_HTML const in the worker. 
+ 
 ## For a working example of the Github actions please check out the FantasyPlayer repo
 https://github.com/BiscuitUmU/FantasyPlayer/tree/testing/.github/workflows
