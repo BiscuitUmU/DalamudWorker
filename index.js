@@ -16,7 +16,7 @@ const SETTINGS = {
     RELEASE_TAG: "Release-",
     TESTING_TAG: "Testing-",
     DOWNLOAD_COUNT: 42069,
-    GITHUB_USER_AGENT: "dalamud.bix.moe repo bot"
+    GITHUB_USER_AGENT: "DalamudWorker bot"
 }
 
 addEventListener('fetch', event => {
