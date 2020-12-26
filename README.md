@@ -1,5 +1,5 @@
 # DalamudWorker
-Automated Cloudflare Worker for creating a Dalamud repo from Github Actions
+Automated Cloudflare Worker for creating a Dalamud repo from Github Actions using Github's releases API
 
 ## How to setup the script:
  - Create a new Cloudflare Worker.
